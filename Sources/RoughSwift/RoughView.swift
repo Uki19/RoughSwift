@@ -124,6 +124,12 @@ public extension RoughView {
         return v
     }
 
+    func seed(_ seed: UInt64?) -> Self {
+        var v = self
+        v.options.seed = seed
+        return v
+    }
+
     func rectangle() -> Self {
         draw(FullRectangle())
     }

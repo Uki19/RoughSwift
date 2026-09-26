@@ -24,6 +24,7 @@ public struct Options {
     public var dashOffset: Float = -1
     public var dashGap: Float = -1
     public var zigzagOffset: Float = -1
+    public var seed: UInt64? = nil
 
     public init() {}
 
@@ -43,7 +44,8 @@ public struct Options {
             "hachureGap": hachureGap,
             "dashOffset": dashOffset,
             "dashGap": dashGap,
-            "zigzagOffset": zigzagOffset
+            "zigzagOffset": zigzagOffset,
+            "seed": seed
         ]
     }
 }
@@ -62,6 +64,7 @@ public extension Options {
         dashOffset <-? (dictionary["dashOffset"] as? NSNumber)?.floatValue
         dashGap <-? (dictionary["dashGap"] as? NSNumber)?.floatValue
         zigzagOffset <-? (dictionary["zigzagOffset"] as? NSNumber)?.floatValue
+        seed <-? (dictionary["seed"] as? NSNumber)?.uint64Value
 
         if let fillStyleRawValue = dictionary["fillStyle"] as? String,
            let fillStyle = FillStyle(rawValue: fillStyleRawValue) {
